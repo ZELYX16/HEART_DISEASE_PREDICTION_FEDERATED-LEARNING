@@ -11,6 +11,7 @@ import json
 import pandas as pd
 import joblib
 import warnings
+import os
 
 app = FastAPI(title="CardioPredict AI Backend")
 
@@ -66,8 +67,9 @@ FEATURE_COLUMNS = [
 print("Loading Clinical (MLP) Model and Scaler...")
 mlp_model = MLP(len(FEATURE_COLUMNS))
 try:
+    mlp_model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "global_model.pth")
     # strict=False ensures it loads perfectly even if your Dropout rate was different
-    mlp_model.load_state_dict(torch.load("global_model.pth", map_location=device), strict=False)
+    mlp_model.load_state_dict(torch.load(mlp_model_path, map_location=device), strict=False)
     print("Successfully loaded MLP Model")
 except Exception as e:
     print(f"Warning: Could not load MLP model weights. Error: {e}")
@@ -76,7 +78,8 @@ mlp_model.to(device)
 mlp_model.eval()
 
 try:
-    scaler = joblib.load("scaler.pkl")
+    scaler_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scaler.pkl")
+    scaler = joblib.load(scaler_path)
     print("Successfully loaded StandardScaler")
 except Exception as e:
     warnings.warn(f"scaler.pkl not found! Predictions will be inaccurate. Error: {e}")
@@ -113,7 +116,7 @@ print("Loading PyTorch CNN Weights...")
 cnn_model = get_cnn_model()
 
 try:
-    CNN_MODEL_PATH = 'global_model_round_10.pth' 
+    CNN_MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'global_model_round_10.pth')
     cnn_model.load_state_dict(torch.load(CNN_MODEL_PATH, map_location=device))
     print(f"Successfully loaded {CNN_MODEL_PATH}")
 except Exception as e:
