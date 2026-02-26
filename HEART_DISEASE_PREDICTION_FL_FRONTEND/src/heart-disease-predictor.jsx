@@ -757,7 +757,8 @@ export default function HeartDiseasePrediction() {
   const handleMLPSubmit = async (formData) => {
     setIsLoading(true);
     try {
-      const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      const isProd = import.meta.env.PROD;
+      const API_BASE = import.meta.env.VITE_API_URL || (isProd ? "https://bkarthy-cardiofl-backend.hf.space" : "http://localhost:8000");
       const response = await fetch(`${API_BASE}/api/predict/mlp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -777,7 +778,8 @@ export default function HeartDiseasePrediction() {
   const handleECGSubmit = async (formData) => {
     setIsLoading(true);
     try {
-      const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      const isProd = import.meta.env.PROD;
+      const API_BASE = import.meta.env.VITE_API_URL || (isProd ? "https://bkarthy-cardiofl-backend.hf.space" : "http://localhost:8000");
       const response = await fetch(`${API_BASE}/api/predict/ecg`, {
         method: "POST",
         body: formData,
@@ -805,7 +807,8 @@ export default function HeartDiseasePrediction() {
 
     setIsLoading(true);
     try {
-      const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      const isProd = import.meta.env.PROD;
+      const API_BASE = import.meta.env.VITE_API_URL || (isProd ? "https://bkarthy-cardiofl-backend.hf.space" : "http://localhost:8000");
       const formData = new FormData();
       formData.append("clinical_data", JSON.stringify(mlpData));
       formData.append("ecg_image", ecgBlob, "cropped-ecg.png");
