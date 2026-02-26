@@ -1,0 +1,52 @@
+# =========================
+# Common / System
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+.env.*
+!.env.example
+
+# =========================
+# Global Ignores
+# =========================
+node_modules/
+dist/
+__pycache__/
+venv/
+env/
+.venv/
+*.pyc
+*.pyo
+
+# =========================
+# Frontend: HEART_DISEASE_PREDICTION_FL_FRONTEND
+# =========================
+HEART_DISEASE_PREDICTION_FL_FRONTEND/node_modules/
+HEART_DISEASE_PREDICTION_FL_FRONTEND/dist/
+HEART_DISEASE_PREDICTION_FL_FRONTEND/dist-ssr/
+HEART_DISEASE_PREDICTION_FL_FRONTEND/*.local
+HEART_DISEASE_PREDICTION_FL_FRONTEND/coverage/
+
+# =========================
+# Backend: HEART_DISEASE_PREDICTION_FL_BACKEND
+# =========================
+HEART_DISEASE_PREDICTION_FL_BACKEND/__pycache__/
+HEART_DISEASE_PREDICTION_FL_BACKEND/*.py[cod]
+HEART_DISEASE_PREDICTION_FL_BACKEND/*$py.class
+HEART_DISEASE_PREDICTION_FL_BACKEND/.pytest_cache/
+HEART_DISEASE_PREDICTION_FL_BACKEND/.coverage
+HEART_DISEASE_PREDICTION_FL_BACKEND/htmlcov/
+HEART_DISEASE_PREDICTION_FL_BACKEND/backenv/
+HEART_DISEASE_PREDICTION_FL_BACKEND/env/
+HEART_DISEASE_PREDICTION_FL_BACKEND/.venv/
+HEART_DISEASE_PREDICTION_FL_BACKEND/models/*.pt
+HEART_DISEASE_PREDICTION_FL_BACKEND/models/*.h5
+HEART_DISEASE_PREDICTION_FL_BACKEND/models/*.pkl
