@@ -30,3 +30,9 @@ Thumbs.db
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+
+#Backend files
+../HEART_DISEASE_PREDICTION_FL_BACKEND/_pycache__/
+../HEART_DISEASE_PREDICTION_FL_BACKEND/venv/
+../HEART_DISEASE_PREDICTION_FL_BACKEND/backenv
