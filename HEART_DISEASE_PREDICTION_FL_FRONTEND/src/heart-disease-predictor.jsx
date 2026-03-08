@@ -14,7 +14,7 @@ import {
   X,
   Plus,
   ArrowLeft,
-  Crop
+  Crop,
 } from "lucide-react";
 import "./styles.css";
 import "./cropper-styles.css";
@@ -23,42 +23,50 @@ import "./cropper-styles.css";
 // 1. BRANDING COMPONENTS
 // ==========================================
 const CardioLogo = ({ size = 32 }) => (
-  <div className="cardio-logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-    <svg 
-      width={size} 
-      height={size} 
-      viewBox="0 0 40 40" 
-      fill="none" 
+  <div
+    className="cardio-logo"
+    style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 40 40"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ filter: 'drop-shadow(0 0 8px var(--glow-primary))' }}
-    >
+      style={{ filter: "drop-shadow(0 0 8px var(--glow-primary))" }}>
       <rect width="40" height="40" rx="10" fill="url(#logo-grad)" />
-      <path 
-        d="M10 21C10 21 12.5 21 14 17L17 27L21 12L24 21H30" 
-        stroke="white" 
-        strokeWidth="3" 
-        strokeLinecap="round" 
-        strokeLinejoin="round" 
+      <path
+        d="M10 21C10 21 12.5 21 14 17L17 27L21 12L24 21H30"
+        stroke="white"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         className="pulse-path"
       />
       <circle cx="10" cy="21" r="2" fill="white" />
       <circle cx="30" cy="21" r="2" fill="white" />
       <defs>
-        <linearGradient id="logo-grad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="logo-grad"
+          x1="0"
+          y1="0"
+          x2="40"
+          y2="40"
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#FF3366" />
           <stop offset="1" stopColor="#9D50BB" />
         </linearGradient>
       </defs>
     </svg>
-    <span style={{ 
-      fontSize: '1.4rem', 
-      fontWeight: 800, 
-      letterSpacing: '-0.02em',
-      fontFamily: 'var(--font-display)',
-      background: 'linear-gradient(to right, #fff, #a5b4fc)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent'
-    }}>
+    <span
+      style={{
+        fontSize: "1.4rem",
+        fontWeight: 800,
+        letterSpacing: "-0.02em",
+        fontFamily: "var(--font-display)",
+        background: "linear-gradient(to right, #fff, #a5b4fc)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      }}>
       CardioFL
     </span>
   </div>
@@ -309,17 +317,17 @@ const MLPInputForm = React.forwardRef(
         newErrors.active = "Required";
 
       setErrors(newErrors);
-      
+
       if (Object.keys(newErrors).length > 0) {
         // Find the first error field and scroll to it
         const firstErrorField = Object.keys(newErrors)[0];
         const element = document.getElementById(`field-${firstErrorField}`);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
           element.focus();
         }
       }
-      
+
       return Object.keys(newErrors).length === 0;
     };
 
@@ -363,7 +371,10 @@ const MLPInputForm = React.forwardRef(
     React.useEffect(() => {
       if (result && resultRef.current) {
         setTimeout(() => {
-          resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          resultRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
         }, 100);
       }
     }, [result]);
@@ -546,12 +557,11 @@ const MLPInputForm = React.forwardRef(
 
         {!hideSubmit && result && (
           <div className={`result-card ${isBadResult ? "bad" : "good"}`}>
-            <h3 className="result-title">
-              {result.model} Results
-            </h3>
+            <h3 className="result-title">{result.model} Results</h3>
             <div className="result-detail">
               <strong>Diagnosis:</strong>
-              <span className={`diagnosis-text ${isBadResult ? "bad-text" : "good-text"}`}>
+              <span
+                className={`diagnosis-text ${isBadResult ? "bad-text" : "good-text"}`}>
                 {result.prediction}
               </span>
             </div>
@@ -621,16 +631,22 @@ const ECGImageUpload = React.forwardRef(
     React.useEffect(() => {
       if (result && resultRef.current) {
         setTimeout(() => {
-          resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          resultRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
         }, 100);
       }
     }, [result]);
-    
+
     // Also scroll to error if there is one
     const errorRef = useRef(null);
     React.useEffect(() => {
       if (error && errorRef.current) {
-        errorRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        errorRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
       }
     }, [error]);
 
@@ -707,13 +723,14 @@ const ECGImageUpload = React.forwardRef(
         )}
 
         {!hideSubmit && result && (
-          <div ref={resultRef} className={`result-card ${isBadResult ? "bad" : "good"}`}>
-            <h3 className="result-title">
-              {result.model} Results
-            </h3>
+          <div
+            ref={resultRef}
+            className={`result-card ${isBadResult ? "bad" : "good"}`}>
+            <h3 className="result-title">{result.model} Results</h3>
             <div className="result-detail">
               <strong>Diagnosis:</strong>
-              <span className={`diagnosis-text ${isBadResult ? "bad-text" : "good-text"}`}>
+              <span
+                className={`diagnosis-text ${isBadResult ? "bad-text" : "good-text"}`}>
                 {result.prediction}
               </span>
             </div>
@@ -740,17 +757,37 @@ export default function HeartDiseasePrediction() {
     combined: null,
   });
 
+  // NEW: State for the custom Error Modal
+  const [errorModal, setErrorModal] = useState({
+    isOpen: false,
+    message: "",
+  });
+
   const mlpFormRef = useRef(null);
   const ecgFormRef = useRef(null);
 
   const handleApiError = async (response) => {
     const errorData = await response.json();
     let errorMsg = errorData.detail || "An unknown server error occurred";
+
+    // 1. Handle standard FastAPI Pydantic validation errors (Array format)
     if (Array.isArray(errorMsg)) {
       errorMsg = errorMsg
         .map((err) => `${err.loc[err.loc.length - 1]}: ${err.msg}`)
         .join("\n");
     }
+    // 2. Handle your custom Gatekeeper dictionary error!
+    else if (
+      typeof errorMsg === "object" &&
+      errorMsg !== null &&
+      errorMsg.error_msg
+    ) {
+      const conf = errorMsg.confidence
+        ? `\n(Confidence: ${errorMsg.confidence.toFixed(1)}%)`
+        : "";
+      errorMsg = `${errorMsg.error_msg}${conf}`;
+    }
+
     throw new Error(errorMsg);
   };
 
@@ -758,7 +795,11 @@ export default function HeartDiseasePrediction() {
     setIsLoading(true);
     try {
       const isProd = import.meta.env.PROD;
-      const API_BASE = import.meta.env.VITE_API_URL || (isProd ? "https://bkarthy-cardiofl-backend.hf.space" : "http://localhost:8000");
+      const API_BASE =
+        import.meta.env.VITE_API_URL ||
+        (isProd
+          ? "https://bkarthy-cardiofl-backend.hf.space"
+          : "http://localhost:8000");
       const response = await fetch(`${API_BASE}/api/predict/mlp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -769,7 +810,7 @@ export default function HeartDiseasePrediction() {
       const result = await response.json();
       setResults((prev) => ({ ...prev, mlp: result }));
     } catch (error) {
-      alert(`Validation/Server Error:\n${error.message}`);
+      setErrorModal({ isOpen: true, message: error.message });
     } finally {
       setIsLoading(false);
     }
@@ -779,7 +820,11 @@ export default function HeartDiseasePrediction() {
     setIsLoading(true);
     try {
       const isProd = import.meta.env.PROD;
-      const API_BASE = import.meta.env.VITE_API_URL || (isProd ? "https://bkarthy-cardiofl-backend.hf.space" : "http://localhost:8000");
+      const API_BASE =
+        import.meta.env.VITE_API_URL ||
+        (isProd
+          ? "https://bkarthy-cardiofl-backend.hf.space"
+          : "http://localhost:8000");
       const response = await fetch(`${API_BASE}/api/predict/ecg`, {
         method: "POST",
         body: formData,
@@ -789,7 +834,7 @@ export default function HeartDiseasePrediction() {
       const result = await response.json();
       setResults((prev) => ({ ...prev, ecg: result }));
     } catch (error) {
-      alert(`Validation/Server Error:\n${error.message}`);
+      setErrorModal({ isOpen: true, message: error.message });
     } finally {
       setIsLoading(false);
     }
@@ -800,15 +845,23 @@ export default function HeartDiseasePrediction() {
     const ecgBlob = ecgFormRef.current?.getValidatedData();
 
     if (!mlpData || !ecgBlob) {
-      if (!ecgBlob && mlpData)
-        alert("Please upload and crop an ECG image to proceed.");
+      if (!ecgBlob && mlpData) {
+        setErrorModal({
+          isOpen: true,
+          message: "Please upload and crop an ECG image to proceed.",
+        });
+      }
       return;
     }
 
     setIsLoading(true);
     try {
       const isProd = import.meta.env.PROD;
-      const API_BASE = import.meta.env.VITE_API_URL || (isProd ? "https://bkarthy-cardiofl-backend.hf.space" : "http://localhost:8000");
+      const API_BASE =
+        import.meta.env.VITE_API_URL ||
+        (isProd
+          ? "https://bkarthy-cardiofl-backend.hf.space"
+          : "http://localhost:8000");
       const formData = new FormData();
       formData.append("clinical_data", JSON.stringify(mlpData));
       formData.append("ecg_image", ecgBlob, "cropped-ecg.png");
@@ -823,7 +876,7 @@ export default function HeartDiseasePrediction() {
       const result = await response.json();
       setResults((prev) => ({ ...prev, combined: result }));
     } catch (error) {
-      alert(`Validation/Server Error:\n${error.message}`);
+      setErrorModal({ isOpen: true, message: error.message });
     } finally {
       setIsLoading(false);
     }
@@ -843,14 +896,41 @@ export default function HeartDiseasePrediction() {
   React.useEffect(() => {
     if (results.combined && combinedResultRef.current) {
       setTimeout(() => {
-        combinedResultRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        combinedResultRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
       }, 100);
     }
   }, [results.combined]);
 
+  // NEW: The Error Modal Component UI
+  const ErrorModalUI = () => {
+    if (!errorModal.isOpen) return null;
+
+    return (
+      <div className="modal-overlay">
+        <div className="modal-container">
+          <div className="modal-icon-wrapper">
+            <AlertCircle size={48} />
+          </div>
+          <h2 className="modal-title">Analysis Error</h2>
+          <p className="modal-message">{errorModal.message}</p>
+          <button
+            className="modal-close-btn"
+            onClick={() => setErrorModal({ isOpen: false, message: "" })}>
+            Acknowledge & Close
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   if (!selectedMode) {
     return (
       <div className="app-container">
+        <ErrorModalUI />
+
         <header className="app-header">
           <CardioLogo size={40} />
           <div className="header-badge">Federated Learning Neural System</div>
@@ -858,12 +938,13 @@ export default function HeartDiseasePrediction() {
 
         <main className="hero-section">
           <h1 className="hero-title">
-            Predictive Cardiology 
+            Predictive Cardiology
             <span className="accent-text"> Redefined through AI</span>
           </h1>
           <p className="hero-subtitle">
             Leveraging federated learning and deep clinical metrics to provide
-            accurate heart disease risk assessments. Choose your diagnostic pathway below.
+            accurate heart disease risk assessments. Choose your diagnostic
+            pathway below.
           </p>
           <div className="mode-cards">
             <div
@@ -934,6 +1015,8 @@ export default function HeartDiseasePrediction() {
 
   return (
     <div className="app-container">
+      <ErrorModalUI />
+
       <header className="app-header">
         <CardioLogo size={32} />
         <button
@@ -969,7 +1052,7 @@ export default function HeartDiseasePrediction() {
             </div>
             <ECGImageUpload
               onSubmit={handleECGSubmit}
-              onReset={() => setResults(prev => ({ ...prev, ecg: null }))}
+              onReset={() => setResults((prev) => ({ ...prev, ecg: null }))}
               isLoading={isLoading}
               result={results.ecg}
             />
@@ -991,10 +1074,12 @@ export default function HeartDiseasePrediction() {
                 <Upload size={24} />
                 <h2>ECG Image Analysis</h2>
               </div>
-              <ECGImageUpload 
-                ref={ecgFormRef} 
-                hideSubmit={true} 
-                onReset={() => setResults(prev => ({ ...prev, combined: null }))}
+              <ECGImageUpload
+                ref={ecgFormRef}
+                hideSubmit={true}
+                onReset={() =>
+                  setResults((prev) => ({ ...prev, combined: null }))
+                }
               />
             </div>
 
@@ -1019,83 +1104,131 @@ export default function HeartDiseasePrediction() {
                 }}>
                 {isLoading ? (
                   <>
-                    <div className="loader-spinner"></div> Running Comprehensive Analysis...
+                    <div className="loader-spinner"></div> Running Comprehensive
+                    Analysis...
                   </>
                 ) : (
                   <>
-                    Submit Comprehensive Analysis <ArrowRight size={20} style={{ marginLeft: "10px" }} />
+                    Submit Comprehensive Analysis{" "}
+                    <ArrowRight size={20} style={{ marginLeft: "10px" }} />
                   </>
                 )}
               </button>
 
               {results.combined && (
-                <div ref={combinedResultRef} className={`result-card ${isBadCombined ? "bad" : "good"}`}>
+                <div
+                  ref={combinedResultRef}
+                  className={`result-card ${isBadCombined ? "bad" : "good"}`}>
                   <h3 className="result-title">
                     {results.combined.model} Results
                   </h3>
 
-                  <div style={{ marginBottom: "1.5rem", paddingBottom: "1.5rem", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                  <div
+                    style={{
+                      marginBottom: "1.5rem",
+                      paddingBottom: "1.5rem",
+                      borderBottom: "1px solid rgba(255,255,255,0.1)",
+                    }}>
                     <div className="result-detail">
                       <strong>Final Diagnosis:</strong>
-                      <span className={`diagnosis-text ${isBadCombined ? "bad-text" : "good-text"}`}>
+                      <span
+                        className={`diagnosis-text ${isBadCombined ? "bad-text" : "good-text"}`}>
                         {results.combined.final_diagnosis}
                       </span>
                     </div>
-                    <div className="result-detail" style={{ marginTop: "1rem" }}>
+                    <div
+                      className="result-detail"
+                      style={{ marginTop: "1rem" }}>
                       <strong>Overall Confidence:</strong>
                       <span className="confidence-text">
                         {results.combined.overall_confidence}
                       </span>
-                      <span style={{ fontSize: "0.9rem", color: "var(--text-muted)", marginTop: "0.5rem" }}>
+                      <span
+                        style={{
+                          fontSize: "0.9rem",
+                          color: "var(--text-muted)",
+                          marginTop: "0.5rem",
+                        }}>
                         Driven by: {results.combined.primary_driver}
                       </span>
                     </div>
                   </div>
 
-                  <p style={{ margin: "0 0 1rem 0", color: "var(--text-muted)", fontSize: "0.9rem", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: "600" }}>
+                  <p
+                    style={{
+                      margin: "0 0 1rem 0",
+                      color: "var(--text-muted)",
+                      fontSize: "0.9rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.05em",
+                      fontWeight: "600",
+                    }}>
                     Individual Model Breakdown
                   </p>
-                  
-                  <div style={{ display: "grid", gap: "1.5rem", gridTemplateColumns: "1fr 1fr" }}>
-                    <div style={{
+
+                  <div
+                    style={{
+                      display: "grid",
+                      gap: "1.5rem",
+                      gridTemplateColumns: "1fr 1fr",
+                    }}>
+                    <div
+                      style={{
                         padding: "1.5rem",
                         background: "rgba(0,0,0,0.2)",
                         borderRadius: "16px",
                         border: results.combined.primary_driver.includes("MLP")
                           ? "1px solid var(--glow-secondary)"
                           : "1px solid rgba(255,255,255,0.05)",
-                        boxShadow: results.combined.primary_driver.includes("MLP")
+                        boxShadow: results.combined.primary_driver.includes(
+                          "MLP",
+                        )
                           ? "inset 0 0 20px rgba(0, 210, 255, 0.1)"
-                          : "none"
+                          : "none",
                       }}>
                       <div className="result-detail" style={{ margin: 0 }}>
-                        <strong style={{ marginBottom: "0.5rem" }}>Clinical Contribution:</strong>
-                        <span className={`diagnosis-text ${isBadMLP ? "bad-text" : "good-text"}`} style={{ fontSize: "1.4rem" }}>
+                        <strong style={{ marginBottom: "0.5rem" }}>
+                          Clinical Contribution:
+                        </strong>
+                        <span
+                          className={`diagnosis-text ${isBadMLP ? "bad-text" : "good-text"}`}
+                          style={{ fontSize: "1.4rem" }}>
                           {results.combined.details.mlp_contribution}
                         </span>
-                        <span className="confidence-text" style={{ fontSize: "0.9rem", marginTop: "0.5rem" }}>
+                        <span
+                          className="confidence-text"
+                          style={{ fontSize: "0.9rem", marginTop: "0.5rem" }}>
                           Conf: {results.combined.details.mlp_confidence}
                         </span>
                       </div>
                     </div>
 
-                    <div style={{
+                    <div
+                      style={{
                         padding: "1.5rem",
                         background: "rgba(0,0,0,0.2)",
                         borderRadius: "16px",
                         border: results.combined.primary_driver.includes("ECG")
                           ? "1px solid var(--glow-secondary)"
                           : "1px solid rgba(255,255,255,0.05)",
-                        boxShadow: results.combined.primary_driver.includes("ECG")
+                        boxShadow: results.combined.primary_driver.includes(
+                          "ECG",
+                        )
                           ? "inset 0 0 20px rgba(0, 210, 255, 0.1)"
-                          : "none"
+                          : "none",
                       }}>
                       <div className="result-detail" style={{ margin: 0 }}>
-                        <strong style={{ marginBottom: "0.5rem" }}>ECG Contribution:</strong>
-                        <span className={`diagnosis-text ${isBadECG ? "bad-text" : "good-text"}`} style={{ fontSize: "1.4rem" }}>
+                        <strong style={{ marginBottom: "0.5rem" }}>
+                          ECG Contribution:
+                        </strong>
+                        <span
+                          className={`diagnosis-text ${isBadECG ? "bad-text" : "good-text"}`}
+                          style={{ fontSize: "1.4rem" }}>
                           {results.combined.details.cnn_contribution}
                         </span>
-                        <span className="confidence-text" style={{ fontSize: "0.9rem", marginTop: "0.5rem" }}>
+                        <span
+                          className="confidence-text"
+                          style={{ fontSize: "0.9rem", marginTop: "0.5rem" }}>
                           Conf: {results.combined.details.cnn_confidence}
                         </span>
                       </div>
